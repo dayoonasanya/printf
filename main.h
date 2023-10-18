@@ -16,6 +16,6 @@ int print_pointer(va_list args, int p);
 int select(const char *format, va_list args, int p);
 int print_binary(unsigned int n, int p);
 int _printf(const char *format, ...);
-int _xhex(unsigned int n, int p, int uppercase);
+int _xhex(unsigned int n, int p, int up);
 
 #endif

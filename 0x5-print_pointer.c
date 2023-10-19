@@ -11,7 +11,7 @@
 
 int print_pointer(va_list args, int p)
 {
-	void ptr = va_arg(args, void);
+	void *ptr = va_arg(args, void*);
 	unsigned long n = (unsigned long) ptr;
 	int d = 0;
 	int i;

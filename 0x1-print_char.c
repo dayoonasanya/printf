@@ -1,12 +1,12 @@
 #include "main.h"
 /**
- * printf_char - print character.
+ * print_char - print character.
  * @args: argument.
  * @p: character.
  *
  * Return: return character.
  */
-int printf_char(va_list args, int p)
+int print_char(va_list args, int p)
 {
 	int c = va_arg(args, int);
 

@@ -1,5 +1,122 @@
-This manual page explains the function `_printf`, which is used for formatted output conversion. It is part of the `"main.h"` header file and is responsible for printing to the standard output based on the specified format string. The return value indicates the number of characters printed, excluding the null byte, and negative values signal an output error.
+.TH _PRINTF 3 "ALX  0x11. C - _printf"
 
-The format string may contain directives and conversion specifications, the latter being introduced by the `%` character. Corresponding arguments are required for each conversion specifier. Conversion specifiers include options for various data types, such as characters, strings, and different number representations (e.g., decimal, octal, hexadecimal, binary).
+.SH NAME
+.B _prinf \- custom printf function
 
-Additionally, the manual provides examples and references to related functions and resources. If any bugs are discovered, users are encouraged to report them to specific GitHub repositories. The authors are Adedayo A. Onasanya and Oluwatoyosi Oreniyi.
+.SH SYNOPSIS
+.B #include \fB"main.h"
+
+.B int _printf(const char *format, ...);
+
+.SH DESCRIPTION
+The
+.B _printf()
+function is a custom implementation of the C standard library
+\fBprintf()\fR function. It writes formatted output to
+\fIstdout\fR, the standard output stream.
+
+.B Return value
+Upon successful completion, the number of characters written is returned.
+If an error occurs, -1 is returned.
+
+.B Format of the format string
+The \fIformat\fR string is a constant character string that may contain
+ordinary characters and conversion specifiers. A conversion specifier is
+introduced by the character \fB%\fR.
+
+.B Conversion Specifiers
+A conversion specifier consists of the character \fB%\fR followed by an
+optional set of flags, an optional minimum field width, an optional
+precision, and a conversion character.
+
+.RS
+.B %
+A '%' character is written. No argument is converted.
+
+.B c
+The \fIint\fR argument is converted to an \fIunsigned char\fR, and the
+resulting character is written.
+
+.B s
+The \fIconst char *\fR argument is expected to be a pointer to a character
+array (string). Characters from the array are written until the null
+terminator is encountered.
+
+.B d, i
+The \fIint\fR argument is converted to signed decimal notation.
+
+.B b
+The \fIunsigned int\fR argument is converted to binary.
+
+.B o, u, x, X
+The \fIunsigned int\fR argument is converted to octal, decimal, or
+hexadecimal notation.
+
+.B r
+The \fIconst char *\fR argument is written in reverse.
+
+.B R
+Each character in the \fIconst char *\fR argument is converted to its
+corresponding character in ROT13.
+
+.B p
+The address of the argument is written in hexadecimal with a leading \fI0x\fR.
+.RE
+
+.B Flag Characters
+A '%' character may be followed by zero or more of the following flags:
+
+.RS
+.B #
+For \fBo\fR conversions, the first character of the output string is
+prefixed with 0 if it was not zero already. For \fBx\fR and \fBX\fR
+conversions, 0x or 0X, respectively, is prepended for non-zero numbers.
+
+.B ''
+(space) A blank is left before a positive number or an empty string produced
+by a signed conversion.
+
+.B +
+A sign (+ or -) is always placed before a number produced by a signed conversion.
+
+.B 0
+For numeric conversions, the converted value is padded on the left with
+zeroes rather than blanks.
+
+.B -
+The converted value is left-justified (padded on the right with blanks
+instead of on the left with blanks or zeroes).
+.RE
+
+.B Field Width
+After flags, a minimum field width may be specified by a decimal digit string.
+If the converted value has fewer characters than the provided width, the
+output is padded on the left or right with spaces.
+
+Alternatively, width may be provided as an argument using the '*' character.
+
+.B Precision
+After any flags or provided width, a precision may be specified by a '.'
+followed by a decimal digit string.
+
+Alternatively, precision may be provided as an argument using the '*' character
+after the '.'.
+
+.SH EXAMPLES
+Print a character and a string:
+.RS
+#include "main.h"
+
+int main(void)
+{
+    _printf("Character: %c, String: %s\\n", 'H', "Hello");
+    return 0;
+}
+.RE
+
+.SH SEE ALSO
+.B printf(3)
+
+.SH AUTHOR
+1. dayoonasanya
+2. toyore
